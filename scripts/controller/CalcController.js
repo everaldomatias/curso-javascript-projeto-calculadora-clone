@@ -1,15 +1,24 @@
 class CalcController {
 
     constructor() {
+
         // Atributos privados
         this._displayCalc = "0";
         this._currentDate;
 
         this.initialize();
+
     }
 
     initialize() {
 
+        let displayCalcEl = document.querySelector("#display");
+        let dateEl = document.querySelector("#data");
+        let timeEl = document.querySelector("#hora");
+
+        displayCalcEl.innerHTML = "4567";
+        dateEl.innerHTML = "14/04/2010";
+        timeEl.innerHTML = "14:00";
 
     }
 
@@ -26,7 +35,7 @@ class CalcController {
     }
 
     set currentDate( value ) {
-        this._currentDate = value
+        this._currentDate = value;
     }
 
 }
