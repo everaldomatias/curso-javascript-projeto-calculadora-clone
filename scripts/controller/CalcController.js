@@ -12,21 +12,43 @@ class CalcController {
         this._currentDate = this.currentDate
 
         this.initialize();
+        this.initButtonsEvents();
 
     }
 
     initialize() {
 
+        // Inicia o display com a data e hora
         this.setDisplayDateTime();
 
         setInterval(() => {
 
+            // Atualiza o display com a data e hora a cada 1s
             this.setDisplayDateTime();
             
         }, 1000);
 
     }
 
+    initButtonsEvents(){
+        
+        let buttons = document.querySelectorAll("#buttons > g, #parts >g");
+       
+        buttons.forEach( (btn, index) => {
+            btn.addEventListener("click", e => {
+                
+                // Retorna o nome da classe do elemento
+                //console.log(btn.className.baseVal);
+
+                // Retorna o nome da classe removendo (replace) a palavra btn-
+                console.log(btn.className.baseVal.replace("btn-", ""));
+                
+            });
+        })
+
+    }
+
+    // Método para setar a data e hora no display
     setDisplayDateTime() {
         this.displayDate = this.currentDate.toLocaleDateString(this._locale, {
             day: "2-digit",
