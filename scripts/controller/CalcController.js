@@ -50,9 +50,42 @@ class CalcController {
 
     }
 
+    getLastOperation() {
+
+        return this._operation[this._operation.length-1];
+
+    }
+
+    isOperator(value) {
+
+        return ( ['+'. '-', '*', '%', '/'].indexOf(value) > -1 );
+
+    }
+
     addOperation(value) {
-        this._operation.push(value);
+
+        if(isNaN(this.getLastOperation())) {
+            // String
+            if (isOperator(value)) {
+                
+                // Trocar o Operador
+                this._operation[this._operation.length - 1] = value;
+
+            } else {
+
+                console.log(value);
+
+            }
+        } else {
+            // Number
+            let newValue = this.getLastOperation().toString() + value.toString();
+            this._operation.push(newValue);
+        }
+
+        //this._operation.push(value);
         console.log(this._operation);
+
+
     }
 
     setError() {
@@ -71,27 +104,31 @@ class CalcController {
                 break;
 
             case 'soma':
-                this.clearEntry();
+
                 break;
 
             case 'subtracao':
-                this.clearEntry();
+
                 break;
 
             case 'multiplicacao':
-                this.clearEntry();
+
                 break;
 
             case 'divisao':
-                this.clearEntry();
+
                 break;
 
             case 'porcento':
-                this.clearEntry();
+
                 break;
 
             case 'igual':
-                this.clearEntry();
+
+                break;
+
+            case 'ponto':
+
                 break;
 
             case '0':
